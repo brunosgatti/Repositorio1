@@ -19,3 +19,40 @@ Só assim, não será rodado o código do arquivo, precisamos ainda adicionar ma
 Feito isso, podemos agora apenas digitar o símbolo para o diretório atual "." seguido por um "/" e o nome do script para rodá-lo:
 	$ ./ola.py
 
+
+SINTAXE
+Um nome de variável será utilizado para identificá-la. No python, uma variável iniciará com uma letra de a até Z, ou então com um underline "_", seguido de zero ou mais letras, travessões e dígitos (0 a 9)
+Convenções para nomeação de variáveis em Python
+	-A primeira letra deve ser minúscula, exceto em nomes de classes. Classes devem começar com letra maiúscula (p.e. "Seq"
+	-Variáveis privadas começam com um "_" (ex.:_private)
+	-Strong private variables começam com dois "__" (ex.: __private)
+	-Nomes especiais de variável definidas pela linguagem começam e terminam com dois travessões (p.e. __special__)
+A lista a seguir contém palavras já determinadas como funções em python, que não podem ser usadas como nomes de variaveis:
+and         exec        not
+as          finally     or
+assert      for         pass
+break       from        print
+class       global      raise
+continue    if          return
+def         import      try
+del         in          while
+elif        is          with
+else        lambda      yield
+except      list        hash
+
+
+LINHAS E INDENTAÇÃO
+Python considera como um bloco de código linhas adjacentes que apresentam o mesmo nível de indentaçã. Isso mantém organizadas as linhas de código que são executadas de forma conjunta. Erros na indentação irão resultar em um código executada de forma não desejada. Ambientes de Desenvolvimento Interativo (IDEs) e editores de texto podem ajudar a indentar códigos corretamente.
+O número de espaços na indetação precisa ser consistente, mas não é específico. Ou seja, todas as linhas ou sentenças dentro de um bloco precisam ser identadas com o mesmo número. No exemplo abaixo, usou-se quatro espaços:
+	#!/usr/bin/env python3
+	mensagem = '' #cria uma variável vazia
+	for x in (1,2,3,4,5):
+		if x > 4:
+			print ('Olá')
+			mensagem = 'x é grande'
+		else:
+			print(x)
+			mensagem = 'x é pequeno'
+		print (mensagem)
+	print('Pronto!')
+
