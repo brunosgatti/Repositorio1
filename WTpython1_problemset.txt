@@ -1,0 +1,82 @@
+1. Inicie o interpretador interativo do Python
+	$ Python3
+-Imprima "Olá Piracicaba"
+	>>> print('Olá Piracicaba')
+-Armazene seu nome em uma variável
+	>>> name = 'Bruno'
+	>>> print(name)
+
+2. Working with a text editor. Use vi to write a script.
+	-Make sure to include #!/usr/bin/env python3
+	-Add code to print out your name
+	
+
+	$ vi python1_problemset.py
+	#FILE#
+	#!/usr/bin/env python3
+	name = 'Bruno'
+	print('Meu nome é', name)
+	#FILE#
+	<esc>:w<enter>:q<enter>	
+
+
+	-On the command line make it executable using chmod (only have to do this once per script)
+	$ chmod +x python1_problemset.py
+
+	-Run it from the command line
+	./python1_problemset.py
+
+	-If it works, ADD/COMMIT. Make a good message, like "added name to print"
+	-Now add some code to print ou your favorite color
+
+	$ vi python1_problemset.py
+	#FILE#
+	#!/usr/bin/env python3
+	name = 'Bruno'
+	print('Meu nome é', name)
+	color = 'Azul'
+	print('Minha cor favorita é', color)
+	#FILE#
+	<esc>:w<enter>:q<enter>
+
+	-Save it, and run it from the command line
+	$ ./python1_problemset.py
+
+	-Now add some code to create a variable with your favorite activity. Make sure to give your variable a descriptive name
+	- Print out the variable with your favorite activity. You will need to use a comma in your print statement to print text and your variable. "print("some text", your_variable)
+
+	$vi python1_problemset.py
+	#FILE#
+	#!/usr/bin/env python3
+        name = 'Bruno'
+        print('Meu nome é', name)
+        color = 'Azul'
+        print('Minha cor favorita é', color)
+	favActivity = 'Dormir'
+	print('Minha atividade favorita é', favActivity)
+	#FILE#
+	<esc>:w<enter>:q<enter>
+
+	-Save it, and run it from the command line.
+	-Now add some code to print out your favorite animal (ESSE AQUI VOU PULAR PQ TO SEM SACO)
+
+
+3. Use "sys.argv" (make sure to import sys!!!) to retrieve your name, favorite color, favorite activity, and favorite animal from the command line. Remember to chek out the example in the notes. Print all the variables in one print statement.
+
+	import sys
+	var1 = sys.argv[1]
+	var2 = sys.argv[2]
+	var3 = sys.argv[3]
+	var4 = sys.argv[4]
+	print('Meu nome é' + var1 + 'e minha cor favorita é' + var2 + 'o que eu mais gosto de fazer é' + var3 + 'e meu animal favorito é o' + var4)
+	#Ou com vírgulas separando#
+	print('Meu nome é', var1, 'e minha cor favorita é', var2, 'o que eu mais gosto de fazer é', var3, 'e meu animal favorito é o', var4)
+	
+	#A diferença que eu notei entre "," e "+" para separar é que depois que printar, se usar vírgula os argumentos são separados por espaço, se usar "+", os argumentos ficam grudados.
+
+4. Make sure to keep your remote repository synced with your local repo (ADD/COMMIT/PUSH)
+	$ git init
+	$ git add python1_problemset.py
+	$ git commit -m 'added file'
+	$ git push
+
