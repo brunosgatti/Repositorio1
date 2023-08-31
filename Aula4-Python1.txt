@@ -14,7 +14,7 @@ Só assim, não será rodado o código do arquivo, precisamos ainda adicionar ma
 	vi ola.py
 	-Adicionar na primeira linha o seguinte: #!/usr/bin/env Python3
 	-O arquivo ficará assim:
-		#!/usr/bin/env Python3
+		#!/usr/bin/env python3
 		print('Olá, mundo!')
 Feito isso, podemos agora apenas digitar o símbolo para o diretório atual "." seguido por um "/" e o nome do script para rodá-lo:
 	$ ./ola.py
@@ -110,3 +110,54 @@ DICIONÁRIO
 	ex.: { 'TP53' : 'GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTC' , 'BRCA1' : 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA' } 
 
 
+PARÂMETROS DE LINHA DE COMANDO: UMA LISTA ESPECIAL DE PARÂMETROS
+Parâmetros de linha de comando são colocados após o nome do script ou programa. Antes do primeiro parâmetro e entre parâmetros adicionais há espaçamento. Os parâmetros permitem ao usuário fornecer informação ao script quando ele está sendo executado. Python armazena cada trecho do comando em uma lista especial chamada "sys.argv"
+Você precisará importar o módulo chamado "sys" no início do seu script desta forma:
+	#!/usr/bin/env python3
+	import sys
+
+Vamos imaginar que um script é chamado amigos.py. Se você escrever isso na linha de comando:
+	$ amigos.py Maria Carlos
+	O nome do script amigos.py (EU CHAMEI DE sys1.py) e as strings 'Maria' e 'Carlos' aparecem na lista chamada "sys.argv"
+	Estes são os parâmetros da linha de comando, ou argumentos que queira passar para o script. "sys.argv[0] é o nome do script. Você pode acessar valores dos outros parâmetros pelos seus índices, começando com 1, então "sys.argv[1]" contém 'Maria' e "sys.argv[2]" contém 'Carlos'. Você acessa elementos em uma lista adicionando colchetes e o índice numérico depois do nome da lista. Se você quisesse imprimir uma mensagem dizendo que estas duas pessoas são amigas, você poderia escrever um código como este:
+	#!/usr/bin/env pytho3
+	import sys
+	friend1 = sys.argv[1] # get first command line parameter
+	friend2 = sys.argv[2] # get second command line parameter
+	# now print a message to the screen
+	print(friend1, 'and', friend2, 'are friends')
+Então, para ler fará o seguinte:
+	$ chmod +x amigos.py
+	$ amigos py Maria Carlos
+
+Adicionando mais coisas, podemos fazer o seguinte:
+	#!/usr/bin/env pytho3
+        import sys
+        friend1 = sys.argv[1] # get first command line parameter
+        friend2 = sys.argv[2] # get second command line parameter
+	friend3 = sys.argv[3] # get third command line parameter
+	# now print a message to the screen
+	print(friend1, 'and', friend2, 'are friends, but not', friend3)
+
+A vantagem de obter input do usuário da linha de comando é que você pode escrever um script que é genérico. Ele pode imprimir uma mensagem com qualquer input que o usuário fornecer. Isso o torna flexível. O usuário também fornece todos os dados que o script precisa na linha de comando de forma que o script não precisa pedir ao usuário para inserir o nome e esperar até que o usuário o faça. O script pode rodar por conta própria sem mais interações do usuário. Isso permite que o usuário trabalhe em outra coisa.
+
+
+COM QUE TIPO DE OBJETO ESTOU TRABALHANDO?
+Você tem um identificador no seu código chamado "dados". Isso representa uma string, uma lista ou um dicionário? Python tem algumas funções que ajudam a descobrir isso:
+	type(dados) -> diz a qual classe seu objeto pertence
+	dir(dados) -> diz quais métodos estão disponíveis para o seu objeto
+	id(dados) -> diz qual o identificador único do seu objeto
+
+dir() será visto mais adiante
+
+>>> data = [2, 4, 6]
+>>> type(data)
+<class 'list'>
+>>> data = 5
+>>> type(data)
+<class 'int'>
+>>> id(data)
+44990666544
+
+
+O conteúdo desse arquivo foi retirado de: https://github.com/labbces/cen0336/blob/master/pfb.md/#vis%C3%A3o-geral-de-python
