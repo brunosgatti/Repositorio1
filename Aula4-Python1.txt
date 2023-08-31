@@ -1,0 +1,21 @@
+Rodar o python3
+	$python3
+Primeiros comandos:
+	>>>print('Olá, mundo!')
+Pode criar um arquivo de texto em formato '.py', com o código a ser rodado pelo python
+	$ vi ola.py -> print('Olá, mundo"'), :w e :q
+Agora, para rodar esse arquivo:
+	$ python3 ola.py
+Podemos rodar o arquivo sem precisar digitar 'Python3', para isso, devemos usar o comando 'chmod' como se segue abaixo:
+	$ chmod +x ola.py
+Para verificar as permissões do arquivo:
+	$ ls -l ola.py
+Só assim, não será rodado o código do arquivo, precisamos ainda adicionar mais uma linha nele, que indicará ao python3 quer ele deve rodar o script. Assim, fazer como se segue:
+	vi ola.py
+	-Adicionar na primeira linha o seguinte: #!/usr/bin/env Python3
+	-O arquivo ficará assim:
+		#!/usr/bin/env Python3
+		print('Olá, mundo!')
+Feito isso, podemos agora apenas digitar o símbolo para o diretório atual "." seguido por um "/" e o nome do script para rodá-lo:
+	$ ./ola.py
+
