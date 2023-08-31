@@ -56,3 +56,29 @@ O número de espaços na indetação precisa ser consistente, mas não é espec�
 		print (mensagem)
 	print('Pronto!')
 
+
+COMENTÁRIOS
+Devemos incluir comentários para ajudar na identificação do que está sendo feito, sendo que podemos usá-los para descrever algumas coisas, para facilitar o entendimento.
+Para criar comentários é só usar "#", sendo que o que vir depois dele não será interpretado pelo python.
+
+LINHAS EM BRANCO
+Linhas em branco são importantes para aumentar a legibilidade do código. Devemos separar com uma linha em branco trechos de código que vão juntos, organizando em "parágrafos" de código. Linhas em branco são ignoradas pelo interpretador de Python.
+
+
+TIPOS DE DADOS E VARIÁVEIS
+O primeiro conceito a ser considerado é que os tipos de dados de Python podem ser ou não mutáveis. Números literais, strings e tuplas não podem ser alterados. Listas, dicionários e sets podem. Da mesma forma, variáveis individuais também podem ser alteradas. Você pode armazenar dados na memória por meio da atribuição de variáveis, o que pode ser feito usando o sinal "=".
+
+	NÚMEROS E STRINGS
+	São dois tipos comuns de dados. Números literais e strings como 5 ou "meu nome é" são imutáveis. No entanto, seus valores podem ser armazenados em variáveis, as quais podem ser alteradas.
+	Por exemplo:
+	contagem_genes = 5
+	# alterando o valor de contagem_genes
+	contagem_genes = 10
+	Diferentes tipos de dados podem ser atribuídos a variáveis, como inteiros (1,2,3), números de ponto flutuante (3.1415) e strings ('texto').
+	Por exemplo:
+	contagem = 10 # este é um número inteiro
+	média = 2.531 # este é um número de ponto flutuante
+	mensagem = "Bem-vindo ao interpretador de Python" # Isto é uma string
+	10, 2.531 e "Bem-vindo ao interpretador de Python" são peças de dados singylares (escalares) e cada um é armazenado em sua própria variável.
+	Coleções de dados podem ser armazenados em tipos de dados especiais, i.e., tuplas, listas, sets e dicionários. Devemos sempre armazenar semelhantes com semelhantes, de forma tal que cada elemento da coleção deveria ser do mesmo tipo de dado, como um valor de expressão de RNA-seq ou uma contagem de quantos éxons estão em um gene ou uma sequência de leitura.
+
