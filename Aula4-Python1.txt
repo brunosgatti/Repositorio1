@@ -82,3 +82,31 @@ O primeiro conceito a ser considerado é que os tipos de dados de Python podem s
 	10, 2.531 e "Bem-vindo ao interpretador de Python" são peças de dados singylares (escalares) e cada um é armazenado em sua própria variável.
 	Coleções de dados podem ser armazenados em tipos de dados especiais, i.e., tuplas, listas, sets e dicionários. Devemos sempre armazenar semelhantes com semelhantes, de forma tal que cada elemento da coleção deveria ser do mesmo tipo de dado, como um valor de expressão de RNA-seq ou uma contagem de quantos éxons estão em um gene ou uma sequência de leitura.
 
+
+LISTAS
+-Listas são usadas para armazenar coleções de dados ordenados (indexados)
+-Listas são mutáveis: o número de elementos em uma lista e o que é armazenado em cada elemento podem ser alterados
+-Listas são delimitadas por colchetes "[]' e seus itens separados por vírgula
+	ex.: [ 'atg', 'aaa', 'agg' ]
+	índice	valor
+	0	atg
+	1	aaa
+	2	agg
+	obs.: a indexação de listas começa com 0
+
+
+TUPLAS
+-Tuplas são similares a listas e contêm coleções de dados ordenados (indexados)
+-Tuplas são imutáveis: você não consegue alterar os valores ou número de elementos
+-A tupla é delimitada por parênteses '()' e seus itens são separados por vírgula
+	ex.: ( 'Jan' , 'Fev' , 'Mar' , 'Abr' , 'Mai' , 'Jun' , 'Jul' , 'Ago' , 'Set' , 'Out' , 'Nov' , 'Dez' )
+
+
+DICIONÁRIO
+-Dicionários são bons para armazenar dados que podem ser representados em uma tabela de duas colunas
+-Eles armazenam coleções de dados em pares de chave/valor, sem ordenação específica
+-Um dicionário é delimitado por chaves e conjuntos de Chave/Valor separados por vírgula
+-Um sinal de dois-pontos é colocado entre cada chave e valor. Vírgulas separam pares de chave:valor
+	ex.: { 'TP53' : 'GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTC' , 'BRCA1' : 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA' } 
+
+
