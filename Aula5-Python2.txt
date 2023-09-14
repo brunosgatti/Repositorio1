@@ -1,0 +1,13 @@
+Operadores
+	Um operador em uma linguagem de programação é um símbolo que faz o cumpridor ou intérprete para performar operações matemáticas, relativas ou lógicas e produzir um resultado. Aqui, explicaremos o conceito de operadores.
+
+Operadores aritméticos:
+	+ -> adição
+	- -> Subtração
+	* -> Multiplicação
+	/ -> Divisão
+	% -> Módulo (divide o operador da esquerda pelo da direita e retorna o resto, isto é, em uma divisão de resultado não inteiro, devolve o resto da operação) ex.: 3%2 -> 1
+	** -> Expoente (elevado)
+	// Divisão de piso (resultado é o quociente com os dígitos depois do ponto removidos) (Pelo que entendi ele arredonda)
+
+Operadores de atribuição
