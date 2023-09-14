@@ -11,3 +11,330 @@ Operadores aritméticos:
 	// Divisão de piso (resultado é o quociente com os dígitos depois do ponto removidos) (Pelo que entendi ele arredonda)
 
 Operadores de atribuição
+	Usados para atribuir valores para variáveis.
+	= -> a=3 ex.: result=3
+	+= -> result = result + 2
+	-= -> result = result - 2
+	*= -> result = result * 2
+	/= -> result = result /2
+	%= -> result = result % 2
+	** -> result = result ** 2
+	//= -> result = resut // 2
+
+Operadores de comparação
+	Usados para comparar dois valores, retornando verdadeiro ou falso.
+	== -> equal to -> 3==2 : FALSO
+	!= -> not equal to -> 3!=2 : VERDADEIRO
+	> -> greater than -> 3>2 : VERDADEIRO
+	< -> less than -> 3<2 : FALSO
+	>= -> greater than or equal -> 3>=2 : VERDADEIRO
+	<= -> less than or equal -> 3<=2 : FALSO
+
+Operadores lógicos
+	Permitem combinar dois ou mais conjuntos de comparações. Você pode combinar os resultados de diferentes formas. Por exemplo, você pode querer: 1)que todas as declarações sejam verdade, 2)que apenas uma declaração precise ser verdadeira ou 3)que a declaração precise ser falsa.
+	and -> Verdadeiro se o operador da esquerda e o da direita forem verdade ex.: 3>=2 and 2<3 : VERDADEIRO
+	or -> Verdadeiro se o operador da esquerda ou o da direita forem verdade ex.: 3==2 or 2<3 : VERDADEIRO (#Na aula ele colocou como Falso, mas se somente um precisa ser verdade, e 2 é menor que 3, então deve ser verdadeiro)
+	not -> Inverte o status lógico ex.: not false : VERDADEIRO
+
+Operadores de filiação
+	Podemos testar para ver se o valor é incluído em uma corda, tupla ou lista. Você também pode testar que o valor não está incluso na corda, tupla ou lista.
+	in -> Verdadeiro se o valor é incluso em uma lista, tupla ou corda
+	not in -> Verdadeiro se o valor é ausente em uma lista, tupla ou corda
+	Por exemplo:
+	>>> dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+	>>> 'TCT' in dna
+	True
+	>>>
+	>>> 'ATG' in dna
+	False
+	>>> 'ATG' not in dna
+	True
+	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> 'atg' in codons
+	True
+	>>> 'ttt' in codons
+	False
+#### EX 1####
+
+Operador precedente
+	Operadores são listados em ordem de precedência. Os maiores listados primeiro. Nem todos operadores listados aqui são mencionados acima.
+	**				Exponenciação (Eleva o poder)
+	~ + -				Complemento, unário mais e menos (nomes de métodos que os dois últimos são +@ e -@)
+	* / % //			Multiplica, divide, módulo e divisão de piso
+	+ -				Adição e subtração
+	>> <<				Deslocamento parte por parte de direita e esquerda
+	&				Deslocamento 'AND'
+	^ |				Bitwise exclusivo 'OR' e regular 'OR'
+	<= < > >=			Operadores de comparação
+	<> == !=			Operadores de igualdade
+	= %= /= //= -= += *= **=	Operadores de atribuição
+	is				Operadores de identidade
+	is not				Operador de não identidade
+	in				Operador de filiação
+	not in				Operador de filiação negativa
+	not or and			Operadores lógicos
+
+Verdade
+	Voltando um pouco, o que é verdade?
+	Tudo é verdade, exceto por:
+	0
+	None
+	False
+	'' (corda vazia)
+	() (tupla vazia)
+	{} (dicionário vazio)
+
+	O que significa que estes são verdade:
+	'0'
+	'None'
+	'False'
+	'True'
+	' ' (corda de um espaço vazio)
+
+Use 'bool()' para testar a verdade
+	bool() é uma função que testará se um valor é verdade
+	
+	>>> bool(True)
+	True
+	>>> bool('True')
+	True
+	>>>
+	>>>
+	>>> bool(False)
+	False
+	>>> bool('False')
+	True
+	>>>
+	>>>
+	>>> bool(0)
+	False
+	>>> bool('0')
+	True
+	>>>
+	>>>
+	>>> bool('')
+	False
+	>>> bool(' ')
+	True
+	>>>
+	>>>
+	>>> bool(())
+	False
+	>>> bool([])
+	False
+	>>> bool({})
+	False
+
+Lógica: declarações de controle
+	Declarações de controle são usadas para direcionar o fluxo do seu código e criar oportunidade para tomada de decisão. Os fundamentos das declarações de controle são contruindo a verdade.
+
+	Declaração If
+		Use a declaração if para testar a verdade e executar linhas do código caso seja verdade
+		Quando a expressão avalia como verdade cada uma das declarações recuadas abaixo da declaração if, também conhecidas como o bloco de declarações aninhadas, serão executadas
+		expressão if :
+			declaração
+			declaração
+
+		Por exemplo:
+			dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+			if 'AGC' in dna:
+				print('found AGC in your dna sequence')
+		Returns:
+			found AGC in your dna sequence
+
+	Declaração else
+		A porção if da declaração if/else statement se comporta como antes
+		O primeiro bloco recuado é executado se a condição é verdadeira
+		Se a condição for falsa, o segundo bloco recuado (else) é executado
+
+		Por exemplo:
+			dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+			if 'ATG' in dna:
+  				print('found ATG in your dna sequence')
+			else:
+  				print('did not find ATG in your dna sequence') 
+		Returns:
+			did not find ATG in your dna sequence
+
+	Declaração if/elif
+		A condição if é testada como antes, e o bloco recuado é executado caso a condição seja verdadeira
+		Se for falsa, o bloco recuado seguindo o elif é executado se a primeira condição elif for verdadeira
+		Quaisquer condições restantes elif serão testadas em oredm até que uma verdadeira seja encontrada. Se nenhuma for, o bloco recuado else é executado
+		
+		Por exemplo:
+			count = 60
+			if count < 0:
+				message = "is less than 0"
+				print(count, messagem)
+			elif count < 50:
+				message = "is less than 50"
+				print(count, message)
+			elif count > 50:
+				message = "is greater than 50"
+				print(count, message)
+			else:
+				message = "must be 50"
+				print(count, message)
+		Returns:
+			60 is greater than 50
+		Mudando a contagem para 20, qual declaração será executada?
+			count = 20
+			if count < 0:
+  				message = "is less than 0"
+  				print(count, message)
+			elif count < 50:
+  				message = "is less than 50"
+  				print (count, message)
+			elif count > 50:
+  				message = "is greater than 50"
+  				print (count, message)
+			else:
+  				message = "must be 50"
+  				print(count, message)
+		Returns:
+			20 is less than 50
+
+
+Números
+	Python reconhece 3 tipos de números: inteiros, números de ponto flutuante e números complexos
+	
+	Inteiros
+		Conhecidos como int
+		um int pode ser positivo ou negativo
+		e não contém um ponto decimal ou expoente
+
+	Número de ponto flutuante
+		conhecido como float
+		um ponto flutuante pode ser positivo ou negativo
+		e contém um ponto decimal (3.1415) ou expoente (4.2e2)
+	
+	Número complexo
+		conhecido como complex
+		está na forma de a+bi, onde bi é uma parte imaginária
+
+Funções de conversão
+	As vezes um tipo de número precisa ser mudado por outro para a função poder trabalhar. Aqui está a lista de funções para converter tipos de números
+	
+	int(x) -> converte x para um inteiro simples
+	float (x) -> converte x para um número de ponto flutuante
+	complex(x) -> converte x para um número complexo com parte real x e parte imaginária 0
+	complex(x, y) -> converte x e y para um número complexo com parte real x e parte imaginária y
+
+	Exemplos:
+	>>> int(2.3)
+	2
+	>>> float(2)
+	2.0
+	>>> complex(2.3)
+	(2.3+0j)
+	>>> complex(2.3,2)
+	(2.3+2j)
+
+
+Funções numéricas
+	Aqui está a lista de funções que usam números como argumentos. Úteis como arredondamento.
+	
+	abs(x) -> o valor absoluto de x: a distância (positiva) entre x e zero
+	round(x [,n]) -> x arredondado para n dígitos do ponto decima. round() arredonda para um inteiro se o valor é exatamente entre dois inteiros, então round(0.5) é 0 e round (-0.5) é 0. round(1.5) é 2. Arredondar para um número fixo de lugares decimais pode fornecer resultados imprevisíveis.
+	max(x1,x2,...) -> o último argumento é retornado
+	min(x1,x2,...) -> o menor argumento é retornado
+
+	Exemplos:
+	>>> abs(2.3)
+	2.3
+	>>> abs(-2.9)
+	2.9
+	>>> round(2.3)
+	2
+	>>> round(2.5)
+	2
+	>>> round(2.9)
+	3
+	>>> round(-2.9)
+	-3
+	>>> round(-2.3)
+	-2
+	>>> round(-2.009,2)
+	-2.01
+	>>> round(2.675, 2)  # note this rounds down
+	2.67
+	>>> max(4,-5,5,1,11)
+	11
+	>>> min(4,-5,5,1,11)
+	-5
+
+	Muitas funções numéricas não são construídas dentro da central do Python e precisam ser importadas para dentro do script se quisermos usá-las. Para incluir elas, no topo do script digite: import math
+	Estas próximas funções são encontradas no módulo matemático e precisam ser importadas. Para usá-las, preceda a função com o nome do módulo, isto é, math.ceil(15.5)
+	
+		math.function		Descrição
+		math.ceil(x)		retorna o menor inteiro maior ou igual a x
+		math.floor(x)		retorna o maior inteiro menor ou igual a x
+		math.exp(x)		o exponencial de x: e^x é retornado
+		math.log(x)		o logaritmo natural de x, para x>0 é retornado
+		math.log10(x)		o logaritmo de base 10 de x para x>0 é retornado
+		math.modf(x)		as partes fracionárias e inteiras de x são retornadas em uma tupla de dois itens
+		math.pow(x, y)		o valor de x criado pelo poder y é retornado
+		math.sqrt(x)		retorna a raiz quadrada de x para x>=0
+
+		Exemplos
+		>>> import math
+		>>>
+		>>> math.ceil(2.3)
+		3
+		>>> math.ceil(2.9)
+		3
+		>>> math.ceil(-2.9)
+		-2
+		>>> math.floor(2.3)
+		2
+		>>> math.floor(2.9)
+		2
+		>>> math.floor(-2.9)
+		-3
+		>>> math.exp(2.3)
+		9.974182454814718
+		>>> math.exp(2.9)
+		18.17414536944306
+		>>> math.exp(-2.9)
+		0.05502322005640723
+		>>>
+		>>> math.log(2.3)
+		0.8329091229351039
+		>>> math.log(2.9)
+		1.0647107369924282
+		>>> math.log(-2.9)
+		0.05502322005640723
+		>>>
+		>>> math.log10(2.3)
+		0.36172783601759284
+		>>> math.log10(2.9)
+		0.4623979978989561
+		>>>
+		>>> math.modf(2.3)
+		(0.2999999999999998, 2.0)
+		>>>
+		>>> math.pow(2.3,1)
+		2.3
+		>>> math.pow(2.3,2)
+		5.289999999999999
+		>>> math.pow(-2.3,2)
+		5.289999999999999
+		>>> math.pow(2.3,-2)
+		0.18903591682419663
+		>>>
+		>>> math.sqrt(25)
+		5.0
+		>>> math.sqrt(2.3)
+		1.51657508881031
+		>>> math.sqrt(2.9)
+		1.70293863659264
+
+Comparando dois números
+	Algumas vezes, é necessário comparar dois números e descobrir se o primeiro é menos, igual ou maior que o segundo
+	A simples função cmp(x,y) não é disponível em Python3
+	Usar:
+		cmp = (x>y)-(x<y)
+	Retornará três diferentes valores, dependendo do x e do y:
+		se x<y, o -1 é retornado
+		se x>y, o 1 é retornado
+		x==y, o 0 é retornado
