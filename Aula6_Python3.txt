@@ -159,7 +159,313 @@ Se você quiser todos caracteres em sua string para permanecer exatamente como s
 
 
 Concatenação
-Para concatenar
+Para concatenar strings use o operador de concatenação '+'
+	>>> promoter= 'TATAAA'
+	>>> upstream = 'TAGCTA'
+	>>> downstream = 'ATCATAAT'
+	>>> dna = upstream + promoter + downstream
+	>>> print(dna)
+	TAGCTATATAAAATCATAAT
 
+Para strings '+' concatena, para inteiros, soma
+Você precisa converter os números para strings antes de poder concatená-los
+	>>> str(4) + str(3)
+	'43'
+
+Determinar a extensão de uma string
+Use a função len() para calcular a extensão de uma string. Essa função assume a sequencia como um argumento e retorna uma int
+	>>> print(dna)
+	TAGCTATATAAAATCATAAT
+	>>> len(dna)
+	20
+
+O valor que len() retorna pode ser armazenado em uma variável
+	>>> dna_length = len(dna)
+	>>> print(dna_length)
+	20
+
+Podemos misturar strings e ints em print(), mas não em concatenação
+	>>> print("The length of the DNA sequence:" , dna , "is" , dna_length)
+	The length of the DNA sequence: TAGCTATATAAAATCATAAT is 20
+
+Alterando o caso da string
+Alterando o caso da string é um pouco distinto do que você pode esperar inicialmente. Por exemplo, para diminuir uma string precisamos utilizar um método. Um método é uma função específica para um objeto. Quando nós assumimos uma string a uma variável estamos criando uma instância de um objeto de string. Esse objeto tem uma série de métodos que funcinarão nos dados que estão armazenados no objeto. Lembre-se que dir() dirá todos os métodos que estão disponíveis para um objeto. A função lower() é um método de string.
+Vamos criar um novo objeto de string, e usar os métodos de string. A forma que utilizamos um método consiste em inserir um '.' entre o objeto e o nome do método.
+	>>>>>> dna = "ATGCTTG"
+	>>> dna.lower()
+	'atgcttg'
+
+Os conteúdos da variável 'dna' não se alteraram. Strings são imutáveis. Se você quiser manter a versão minúscula de uma string, armazene ela em uma nova variável.
+	>>> print(dna)
+	ATGCTTG
+	>>> dna_lowercase = dna.lower()
+	>>> print(dna)
+	ATGCTTG
+	>>> print(dna_lowercase)
+	atgcttg
+
+O método de string pode ser guardado dentro de outras funções.
+	>>> dna = "ATGCTTG"
+	>>> print(dna.lower())
+	atgcttg
+
+	Os conteúdos de 'dna' são transformados em minúsculos e transportados para a função print()
+
+Se tentarmos usar um método de string em um objeto que não é uma string, receberemos um erro
+	>>> nt_count = 6
+	>>> dna_lc = nt_count.lower()
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	AttributeError: 'int' object has no attribute 'lower'
+
+	Obtemos um AttributeError quando usamos um método em um tipo de objeto incorreto. Nós recebemos que o objeto int (um int é retornado por len()) não tem uma função chamada inferior
+
+Vamos tornar uma string maiúscula agora
+	>>> dna = 'attgct'
+	>>> dna.upper()
+	'ATTGCT'
+	>>> print(dna)
+	attgct
+
+
+Encontrar e contar
+O índice posicional de uma string exata em uma string maior pode ser encontrado e retornado com o método de string find(). Uma string exata é dada como um argumento e o índice de sua primeira ocorrência é retornado. -1 é retornado se nada for encontrado
+	>>> dna = 'ATTAAAGGGCCC'
+	>>> dna.find('T')
+	1
+	>>> dna.find('N')
+	-1
+
+	O subtermo 'T' é encontrado pela primeira vez o índice 1 na string 'dna', então 1 é retornado. O subtermo 'N' não foi encontrado, então -' é retornado. count(str) retorna o número (como um int) que se encaixa exatamente com a string que encontrou
+
+	>>> dna = 'ATGCTGCATT'
+	>>> dna.count('T')
+	4
+
+	O número de vezes que 'T' foi encontrado foi retornado. A string armazenada em 'dna' não é alterada.
+
+
+Substituir uma string com outra
+replace(str1,str2) retorna uma nova string com todas as combinações de str1 em uma string substituída com str2;
+	>>> dna = 'ATGCTGCATT'
+	>>> dna.replace('T','U')
+	'AUGCUGCAUU'
+	>>> print(dna)
+	ATGCTGCATT
+	>>> rna = dna.replace('T','U')
+	>>> print(rna)
+	AUGCUGCAUU
+
+	Todas as ocorrências de T são substituídas por U. A nova string é retornada. A string original não foi de fato alterada. Se você quiser reutilizar a nova string, armazene ela em uma variável.
+
+
+Extraindo um subtermo, ou separando
+Partes de uma string podem ser localizadas baseadas na posição e retornadas. Isso porque uma string é uma sequência. Coordenadas começam em 0. Você adiciona a coordenada em colchetes depois do nome da string.
+Você pode chegar a qualquer parte da string com a seguinte sentença [star : end : step]
+Essa string 'ATTAAAGGGCCC' é feita da seguinte sequência de caracteres, e posições (começando em zero)
+Posição/Índice	Caractere
+0		A
+1		T
+2		T
+3		A
+4		A
+5		A
+6		G
+7		G
+8		G
+9		C
+10		C
+11		C
+
+Vamos retornar os quarto, quinto e sexto nucleotídeos. Para isso, nós precisamos começar contando em 0 e lembrando que o python conta os vãos entre cada caractere, começando com zero.
+
+index      0   1   2   3   4   5   6   7   8 ...
+string       A   T   T   A   A   A   G   G  ...
+
+	>>> dna = 'ATTAAAGGGCCC'
+	>>> sub_dna = dna[3:6]
+	>>> print(sub_dna)
+	AAA
+
+	Os caracteres com índices 3, 4, 5 são retornados. Em outras palavras, todo caractere começando com o índice 3 e acima, mas não incluindo o índice 6 é retornado.
+
+Vamos retornar os primeiros 6 caracteres
+	>>> dna = 'ATTAAAGGGCCC'
+	>>> sub_dna = dna[0:6]
+	>>> print(sub_dna)
+	ATTAAA
+
+Vamos retornar todos os caracteres do índice 6 até o fim da string
+	>>> dna = 'ATTAAAGGGCCC'
+	>>> sub_dna = dna[6:]
+	>>> print(sub_dna)
+	GGGCCC
+
+Vamos retornar os três últimos caracteres
+	>>> sub_dna = dna[-3:]
+	>>> print(sub_dna)
+	CCC
+
+
+Reverter uma string ou uma lista
+Não existe função de reverso, precisamos usar uma fatia com patamar -1 e início e fim vazios
+	>>> dna='GATGAA'
+	>>> dna[::-1]
+	'AAGTAG'
+
+
+Outros métodos de string
+Desde que estes são métodos, se certifique de utilizar na senteça string.method()
+função				Descrição
+s.strip()			retorna uma string com o espaço em branco removido do começo e fim
+s.isalpha()			testa se todos caracteres da string são alfabéticos. Retorna verdadeiro ou falso.
+s.isdigit()			testa se todos caracteres da string são nnuméricos. Retorna verdadeiro ou falso.
+s.startswith('other_string')	testa se a string começa com a string fornecida como argumento. Retorna verdadeiro ou falso.
+s.endswith('other_string')	testa se a string termina com a string fornecida como argumento. Retorna verdadeiro ou falso.
+s.split('delim')		separa a string no delimitador exato fornecido. Retorna a lista de subtermos. Se o argumento é fornecido, a string será separada no espaço em branco.
+s.join(list)		O	 oposto de split(). Os elementos de uma lista serão concatenados juntos usando a string armazenada em 's' como um delimitadoras.
+
+split é um método ou forma de partir uma string em um grupo de caracteres. O que é retornado é uma lista de elementos com caracteres que são usados par partir removidos. Iremos através das listas em mais detalhes na próxima sessão.
+
+Olhemos essa string:
+00000xx000xx000000000000xx0xx00
+
+Vamos separar em 'xx' e obter uma lista dos 0s
+
+O que é o 's' em s.split(delim)? #Acho que é de string
+O que é 'delim' em s.split(delim)? #Acho que é pra delimitar o split
+
+Vamos tentar isso:
+	>>> string_to_split='00000xx000xx000000000000xx0xx00'
+	>>> string_to_split.split('xx')
+	['00000', '000', '000000000000', '0', '00']
+	>>> zero_parts = string_to_split.split('xx')
+	>>> print(zero_parts)
+	['00000', '000', '000000000000', '0', '00']
+
+	Começamos com uma string e agora temos uma lista com todos os delimitadores removidos. Entendi que determinamos o xx como um ponto de corte, e a partir desse comando, delimitamos ele como fim de cada objeto e início do próximo.
+
+Aqui outro exemplo. Vamos dividir em tabs para obter uma lista dos números em colunas separadas tab.
+	>>> input_expr = '4.73\t7.91\t3.65'
+	>>> expression_values = input_expr.split('\t')
+	>>> expression_values
+	['4.73', '7.91', '3.65']
+
+
+join é um método ou uma forma de pegar uma lista de elementos, de coisas, e transformar em uma string com algo posto entre cada elemento. A lista será coberta na próxima seção com mais detalhes.
+
+Vamos aplicar em uma lista de Ns list_of_Ns = ['NNNNN', 'NNN', 'N', 'NNNNNNNNNNNNNNN', 'NN'] em 'xx' para obter essa string:
+NNNNNxxNNNxxNxxNNNNNNNNNNNNNNNxxNN
+
+	>>> list_of_Ns = ['NNNNN', 'NNN', 'N', 'NNNNNNNNNNNNNNN', 'NN']
+	>>> list_of_Ns
+	['NNNNN', 'NNN', 'N', 'NNNNNNNNNNNNNNN', 'NN']
+	>>>
+	>>> string_of_elements_with_xx = 'xx'.join(list_of_Ns)
+	>>> string_of_elements_with_xx
+	'NNNNNxxNNNxxNxxNNNNNNNNNNNNNNNxxNN'
+
+Vamos pegar uma lista de valores de expressão e criar uma string delimitada tab que abrirá bem em uma planilha com cada valor em sua própria coluna:
+	>>> expression_values = ['4.73', '7.91', '3.65']
+	>>>expression_values
+	['4.73', '7.91', '3.65']
+	>>> expression_value_string = '\t'.join(expression_values)
+	>>> expression_value_string
+	'4.73\t7.91\t3.65'
+
+
+Formatação em string
+Strings podem ser formatadas usando a função format(). Bem intuitivo, mas espere até ver os detalhes! Por exemplo, se você quiser incluir strings literais e variáveis em sua declaração de impressão e não quer concatenar ou usar múltiplos argumentos na função print() você pode usar formatação de string
+
+	>>> string = "This sequence: {} is {} nucleotides long and is found in {}."
+	>>> string.format(dna,dna_len,gene_name)
+	'This sequence: TGAACATCTAAAAGATGAAGTTT is 23 nucleotides long and is found in Brca1.'
+	>>> print(string) # string.format() does not alter string
+	This sequence: {} is {} nucleotides long and is found in {}.
+	>>> new_string = string.format(dna,dna_len,gene_name)
+	>>> print(new_string)
+	This sequence: TGAACATCTAAAAGATGAAGTTT is 23 nucleotides long and is found in Brca1.
+
+	OBS.: Tem que determinar dna, dna_len e gene_name antes!!!
+
+Nós colocamos juntamente três variáveis e strings literais em uma única string usando a função format(). A string original não é alterada, uma nova string é retornada e incorpora os argumentos. Você pode salvar o valor retornado em uma nova variável. Cada {} é um espaço reservado para a string que precisa ser inserida.
+Algo legal sobre o format() é que você pode imprimir int e tipos variáveis de string sem converter primeiramente.
+Você pode também chamar diretamente format() dentro de uma função print(). Aqui estão dois exemplos:
+	>>> string = "This sequence: {} is {} nucleotides long and is found in {}."
+	>>> print(string.format(dna,dna_len,gene_name))
+	This sequence: TGAACATCTAAAAGATGAAGTTT is 23 nucleotides long and is found in Brca1.
+
+Ou usa a função format() em uma string literal:
+	>>> print( "This sequence: {} is {} nucleotides long and is found in {}.".format(dna,dna_len,gene_name))
+	This sequence: TGAACATCTAAAAGATGAAGTTT is 23 nucleotides long and is found in Brca1.
+
+
+A mini-linguagem format()
+Até agora, nós usamos apenas {} para mostrar onde inserir o valor de uma variável em uma string. Você pode adicionar caracteres especiais dentro de {} para udar a forma que a variável é formatada quando é inserida dentro da string
+	>>> '{0}, {1}, {2}'.format('a', 'b', 'c')
+	'a, b, c'
+	>>> '{2}, {1}, {0}'.format('a', 'b', 'c')
+	'c, b, a'
+
+Para mudar o espaçamento das strings e a forma que os números são formatados, você adiciona : e outros caracteres especiais como isso {:>5} para corrigir uma string em um campo de cinco caracteres
+
+Vamos corrigir justificando alguns números
+	>>> print( "{:>5}".format(2) )
+	    2
+	>>> print( "{:>5}".format(20) )
+	   20
+	>>> print( "{:>5}".format(200) )
+	  200
+
+E sobre preencher com zeros? Isso significa que o campo de cinco caracteres será preenchido conforme preciso com zeros a esquerda de quaisquer números que você quer apresentar
+	>>> print( "{:05}".format(2) )
+	00002
+	>>> print( "{:05}".format(20) )
+	00020
+
+Use um < para indicar justificação à esquerda
+	>>> print( "{:<5} genes".format(2) )
+	2     genes
+	>>> print( "{:<5} genes".format(20) )
+	20    genes
+	>>> print( "{:<5} genes".format(200) )
+	200   genes
+
+Alinhamento ao centro é feito com ^ ao invés de > ou <. Você pode também preencher com caracteres sem ser 0. Aqui vamos tentar _ ou sublinhar com em :_^. O símbolo de preencher vai antes do símbolo de alinhamento.
+	>>> print( "{:_^10}".format(2) )
+	____2_____
+	>>> print( "{:_^10}".format(20) )
+	____20____
+	>>> print( "{:_^10}".format(200) )
+	___200____
+
+Sumário de símbolos de formatação especiais até agora
+Aqui algumas opções de alinhamento:
+Opção		Significado	
+<		Força o campo para estar alinhado a esquerda com o espaço disponível (Isso é o padrão para a maioria dos objetos).	
+>		Força o campo para estar alinhado a direita com o espaço disponível (Isso é o padrão para números).	
+=		Força o campo para o preenchimento ser posto de pois do sinal (se tiver) mas antes dos dígitos. Isso é usado para imprimir campos na forma ‘+000000120’. Essa opção de alinhamento é apenas válida para tipos numéricos.	
+^		Força o campo para ser centralizado com o espaço disponível.
+
+Tipos comuns
+tipo	descrição
+b	converte para binário
+d	inteiro decimal
+e	expoente, precisão padrão é 6, usa e
+E	expoente, usa E
+f	ponto de flutuação, precisão padrão é 6 (também F)
+g	número genérico, flutua para valores próximos de 0, expoente para outros; também G
+s	string, tipo padrão (conforme exemplo acima)
+x	converte para hexadecimal, também X
+%	converte para % multiplicando por 100
+
+Qual é o ponto?
+Muito pode ser feito com a função format(). Aqui está um último exemplo, mas não a última funcionalidade desta função. Vamos circular um número de ponto de flutuação para algumas casas decimais, começando com muitos. (O padrão é 6). Note que a função circula para a casa decimal mais próxima, mas nem sempre exatamente da forma que você espera por conta da forma que os computadores representam decimais com 1s e 0s.
+	'{:f}'.format(3.141592653589793)
+	'3.141593'
+	>>> '{:.4f}'.format(3.141592653589793)
+	'3.1416'
+
+Material retirado de: https://github.com/labbces/cen0336/blob/master/pfb.md/#python-3
 
 
