@@ -338,3 +338,5 @@ Comparando dois números
 		se x<y, o -1 é retornado
 		se x>y, o 1 é retornado
 		x==y, o 0 é retornado
+
+Material retirado de: https://github.com/labbces/cen0336/blob/master/pfb.md/#python-2
