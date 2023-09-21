@@ -1,0 +1,165 @@
+Sequências
+Na próxima seção, aprenderemos sobre as cordas, tuplas e listas. Todos estes são exemplos de sequências em python. Uma sequência de caracteres 'ACTGTGA', uma tupla (0.23, 9.74, -8.17, 3.24, 0.16), e uma lista ['dog', 'cat', 'bird'] são sequências de diferentes tipos de dados. Veremos mais detalhes em breve.
+
+Em python, um tipo de objeto consegue operações que pertencem àquele tipo. Sequências tem operações sequenciais, então as cordas podem também usar operações sequenciais. Cordas também possuem suas próprias operações específicas.
+
+Você pode perguntar qual a extensão de qualquer sequência
+
+	>>>len('ACGTGA') #Extensão de uma corda
+	6
+	>>>len( (o.23, 9.74, -8.17, 3.24, 0.16) ) #Extensão de uma tupla, precisa de dois parentes
+	5
+	>>>len(['dog', 'cat', 'bird']) #Extensão de uma lista
+
+Você também pode usar funções de cordas específicas, mas não em listas e vice versa. Nós vamos aprender mais sobre isso posteriormente. rstrip() é um métodos de corda ou função. Você obtém um erro se você tentar usar isso em uma lista.
+	>>> 'ACGTGA'.rstrip('A')
+	'ACGTG'
+	>>> ['dog', 'cat', 'bird'].rstrip()
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	AttributeError: 'list' object has no attribute 'rstrip'
+
+
+Quais funções vão com meu objeto?
+Como descobrir quais funções servem com um objeto? Existe uma função prática dir(). Como um exemplo quais funções você pode acionar em sua corda 'ACGTGA'?
+
+	>>> dir('ACGTGA')
+	['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+	dir() retornará todos os atributos de um objeto, dentre eles estão as funções. Tecnicamente, funções pertencentes a uma classe específica (tipo de objeto) são chamadas de métodos. Você pode chamar dir() em qualquer objeto, mais comumente, você usará isso na esfera interativa do Python.
+
+
+Cordas
+Uma corda é umas série de caracteres começando e terminando com marcas de aspas únicas ou duplas.
+Cordas são um exemplo de uma sequência de Python. Uma sequência é definida como um grupo ordenado posicionalmente. Isso significa que cada elemento no grupo tem uma posição, começando do zero, isto é, 0,1,2,3 e assim até você chegar no final da corda
+
+Aspas
+-Única (')
+-Dupla (")
+-Tripla (''' ou """)
+Notas sobre as aspas:
+-Aspas únicas e duplas são equivalentes
+-O nome de uma variável dentro das sentenças é apenas o identificador da corda, não o valor armazenado dentro da variável. format() é útil para interpolação de variáveis em python
+-Sentenças triplas (únicas ou dobradas) são usadas antes e depois de uma corda que abrange múltiplas linhas.
+
+	Exemplos:
+		palavra = 'word'
+		sentença = "This is a sentence"
+		parágrafo = """This is a paragraph. Isso é feito de múltiplas linhas e sentenças.
+		e assim vai
+		"""
+
+Cordas e a função print()
+Nós vimos exemplos de print() antes. Vamos conversar sobre isso um pouco mais. print() é uma função que assume um ou mais argumentos separados por vírgulas.
+
+Vamos usar a função print() para imprimir uma corda
+	>>>print("ATG")
+	ATG
+
+Vamos atribuir uma corda a uma variável e imprimir a variável
+	>>>dna = 'ATG'
+	>>>print(dna)
+	ATG
+
+O que aonctece se colocarmos a variável nas sentenças?
+	>>>dna = 'ATG'
+	>>>print("dna")
+	dna
+
+	A corda literal 'dna' é impressa na tela, não os conteúdos 'ATG'
+
+Vamos ver o que acontece quando nós damos print() em duas cordas literais como argumentos
+	>>>print("ATG", "GGTCTAC")
+	ATG GGTCTAC
+
+	Nós conseguimos as duas cordas literais impressas na tela separadas por um espaço
+
+E se você não quiser suas cordas separadas por um espaço? Use o operador concatenação para concatenar as duas cordas antes ou dentro da função print()
+	>>>print("ATG"+"GGTCTAC")
+	ATGGGTCTAC
+	>>>combined_string = "ATG"+"GGTCTAC"
+	print(combined_string)
+	ATGGGTCTAC
+
+	Nós conseguimos duas cordas impressas na tela sem ser separadas por um espaço. Você pode também usar isso
+	>>>print('ATG', 'GGTCTAC', sep='')
+	ATGGGTCTAC
+
+Agora, vamos imprimir uma variável e uma corda literal
+	>>> dna = 'ATG'
+	>>> print(dna + 'GGTCTAC')
+	ATGGGTCTAC
+
+	Se colocar só ',' ao invés de '+', vai imprimir com espaço entre os dois
+
+Algo para se pensar sobre: valores de variáveis são variáveis. Em outras palavras, eles são mutáveis e alteráveis.
+
+
+Print() e erros comuns
+Vamos olhar os erros típicos que você encontrará quando usar a função print()
+O que acontecerá se você esquecer de fechar as suas sentenças?
+	>>> print("GGTCTAC)
+  	File "<stdin>", line 1
+    	print("GGTCTAC)
+        	  ^
+	SyntaxError: unterminated string literal (detected at line 1)
+	
+	Nós obtemos um 'SyntaxError' se a sentença de encerramento não for usada
+
+O que acontecerá se você se esquecer de incluir uma corda que você quer imprimir nas sentenças?
+	>>> print(GGTCTAC)
+	Traceback (most recent call last):
+  	File "<stdin>", line 1, in <module>
+	NameError: name 'GGTCTAC' is not defined
+
+	Nós obetmos um 'NameError' quando a corda literal não for inclusa nas sentenças por o Python está procurando uma variável com o nome GGTCTAC
+
+	>>> print "boo"
+  	File "<stdin>", line 1
+    	print "boo"
+              	^
+	SyntaxError: Missing parentheses in call to 'print'
+
+
+Caracteres especiais e de escape
+Como você incluiria uma nova linha, retorno de transporte ou tab em sua corda?
+
+	Caractere de escape	Descrição
+	\n			Nova linha
+	\r			Retorno de transporte
+	\t			Tab
+
+Vamos incluir alguns caracteres de escape em nossas cordas e funções print()
+	>>> string_with_newline = 'this string has a new line\nthis is the second line'
+	>>> print(string_with_newline)
+	this string has a new line
+	this is the second line
+
+print() adiciona espaços entre argumentos e uma nova linha ao final. Você pode mudar isso com sep= e end= .Aqui está um exemplo: print('one line', 'second line', 'third line', sep='\n', end='')
+
+Uma forma mais limpa para fazer isso é expressar uma corda de múltiplas linhas incluesa em aspas triplas (""")
+
+Vamos aprender um caractere (\t)
+	>>> line = 'value1\tvalue2\tvalue3'
+	>>> print(line)
+	value1	value2	value3
+
+	Nós obtemos as três palavras separadas por caracteres tab. Um formato comum para dados é separar colunas com tabs como isso.
+
+Você pode adicionar uma barra invertida antes de qualquer caractere para forçar de ser impresso como um literal. Isso é chamado 'escaping'. Só é realmente útil para imprimir sentenças literais ' and "
+	>>> print('this is a \'word\'')  # if you want to print a ' inside '...'
+	this is a 'word'
+	>>> print("this is a 'word'") # maybe clearer to print a ' inside "..."
+	this is a 'word'
+
+Se você quiser todos caracteres em sua string para permanecer exatamente como são, declare sua string uma string crua literal, com 'r' antes da primeira sentença. Isso parece feio, mas funciona.
+	>>> line = r"value1\tvalue2\tvalue3"
+	>>> print(line)
+	value1\tvalue2\tvalue3
+
+
+Concatenação
+Para concatenar
+
+
+
