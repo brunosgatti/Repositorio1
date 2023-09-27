@@ -92,3 +92,330 @@ sorted(list, key=str.lower, reverse=False)				str.lower() faz com que todos os e
 
 
 Lista de métodos
+Lembre-se que métodos são utilizados no seguinte formato list.method()
+Para esses exemplos utilize: nums = [1,2,3] e codons = ['atg', 'aaa', 'agg']
+
+Métodos				Descrição							Exemplo
+list.append(obj)		anexa um objeto no final de uma lista				nums.append(9) ; print(nums) ; retorna [1,2,3,9]
+list.count(obj)			conta as ocorrências de um objeto em uma lista	nums.count(2) retorna 1
+list.index(obj)			retorna o menor índice em que o objeto fornecido é encontrado	nums.index(2) retorna 1
+list.pop()			remove e retorna o últio valor de uma lista. A lista é agora um elemento mais curta	nums.pop() retorna 3
+list.insert(index, obj)		insere um valor ao índice fornecido. Lembre-se de pensar sobre as divisões entre os elementos	nums.insert(0,100) ; print(nums) retorna [100, 1, 2, 3]
+list.extend(new_list)		anexa new_list ao final de list	nums.extend([7, 8]) ; print(nums) retorna [1, 2, 3, 7,8]
+list.pop(index)			remove e retorna o valor do argumento indexado. A lista é agora um valor mais curta	nums.pop(0) retorna 1
+list.remove(obj)		encontra o menor índice do objeto fornecido e remove ele da lista. A lista é agora um elemento mais curta	codons.remove('aaa') ; print(codons) retorna [ 'atg' , 'agg' ]
+list.reverse()			inverte a ordem da lista	nums.reverse() ; print(nums) retorna [3,2,1]
+list.copy()			Retorna uma cópia rasa da lista. Rasa vs Deep apenas importa em estruturas de data multidimensionais.	
+list.sort([func])		organiza uma lista utilizando a função fornecida. Não retorna uma lista. A lista foi alterada. Uma organização de lista avançada será coberta assim que escrever suas próprias funções for discutido.	codons.sort() ; print(codons) retorna ['aaa', 'agg', 'atg']
+
+
+Construindo uma lista um valor por vez
+Agora que já vimos a função append(), nós podemos construir uma lista um valor por vez
+>>> words = []
+>>> print(words)
+[]
+>>> words.append('one')
+>>> words.append('two')
+>>> print(words)
+['one', 'two']
+Podemos pegar essa lista e adicionar outra lista através de words.extend([''])
+
+
+Loops
+Todas as codificações pelas quais percorremos até então foram executadas linha por linha. Algumas vezes existem blocos de códigos que queremos executar mais do que uma vez. Loops permitem que façamos isso:
+1. while loop
+2. for loop
+
+While loop
+O while loop vai continuar a executar um bloco de código enquanto a expressão de teste apresentar verdadeiro
+
+While Loop Syntaxe
+	while expression:
+	  # estas declarações são executadas sempre que o código entrar em loop 
+	  statement1
+	  statement2
+	  more_statements
+	# código logo abaixo é executado depois que o while loop existir
+	rest_of_code_goes_here
+	more_code
+A condição é a expressão. O bloco de código while loop é uma coleção de declarações recuadas seguindo a expressão
+
+Código
+	#!/usr/bin/env python3
+	
+	count = 0
+	while count < 5:
+	  print("count:" , count)
+	  count+=1
+	print("Done") 
+Saída
+	$ python while.py
+	count: 0
+	count: 1
+	count: 2
+	count: 3
+	count: 4
+	Done
+
+A condição while foi verdadeira 5 vezes e o bloco de código while foi executado 5 vezes.
+	-a contagem é igual a 0 quando começamos
+	-0 é menor que 5, então executamos o bloco while
+	-contagem é impressa
+	-contagem é incrementada (contagem = count+1)
+	-contagem é agora igual a 1
+	-1 é menor que 5, então executamos o bloco while pela segunda vez
+	-isso permanece até que a contagem seja 5
+	-5 não é menor que 5, então nós saímos do bloco while
+	-A primeira linha seguindo a declaração while é executada, 'Done' é impresso
+
+
+Loops infinitos
+Um loop infinito ocorre quando uma condição while é sempre verdadeira. Aqui está um exemplo de um loop infinito
+
+Código
+	#!/usr/bin/env python3
+	
+	count = 0
+	while count < 5:            # isso é normalmente um bug!!
+	  print("count:" , count)   # esqueça de incrementar contagem no loop!!
+	print("Done") 
+
+Saída
+	$ python infinite.py
+	count: 0
+	count: 0
+	count: 0
+	count: 0
+	count: 0
+	count: 0
+	count: 0
+	count: 0
+	...
+	...
+O que fez com que a condição seja sempre verdadeira? A condição que incrementa a contagem está faltando, então sempre será inferior a 5. Para impedir o código de imprimir para sempre, utilize ctrl+c. Um comportamento como esse é quase sempre devido a um bug no código
+
+Uma forma melhor de escrever um loop infinito é com True. Você precisará incluir algo como if ...: break
+
+Código
+	#!/usr/bin/env python3
+	count=0
+	while True:
+	  print("count:",count)
+	  # you probably want to add if...: break 
+	  # so you can get out of the infinite loop
+	print('Finished the loop')
+
+
+For Loops
+Um for loop é um loop que executa o bloco de códigos for para qualquer membro de uma sequência, por exemplo os elementos de uma lista ou as letras de uma string
+
+For Loop Syntaxe
+for iterating_variable in sequence:
+	statement(s)
+
+Um exemplo de sequência é uma lista. Vamos usar um for loop com uma lista de palavras
+Código
+	#!/usr/bin/env python3
+
+	words = ['zero','um','dois','três','quatro']
+	for word in words:
+	  print(word)
+
+Perceba como nomeamos nossas variáveis, a lista é plural e a variável interativa é singular
+Saída
+	python3 list_words.py
+	zero
+	um
+	dois
+	três
+	quatro
+
+Este próximo exemplo é utilizando um for loop para interagir em uma string. Lembre-se que uma string é uma sequência como uma lista. Cada caractere possui uma posição. Olhe novamente em "Extraindo uma substring, ou Recortando" na seção Strings para ver outras formas em que strings podem ser tratadas como listas.
+
+Código
+	#!/usr/bin/env python3
+
+	dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+	for nt in dna:
+	  print(nt)
+
+Saída
+	$ python3 for_string.py
+	G
+	T
+	A
+	C
+	C
+	T
+	T
+	...
+	...
+Essa é uma forma fácil de acessar cada caractere em uma string. É especialmente bom para sequências de DNA
+
+Outro exemplo de interagir em uma lista de variáveis, estes números de tempo
+
+Código
+	#!/usr/bin/env python3
+
+	numbers = [0,1,2,3,4]
+	for num in numbers:
+	  print(num)
+
+Saída
+	$ python3 list_numbers.py
+	0
+	1
+	2
+	3
+	4
+
+Python tem uma função chamada range() que retornará números que podem ser convertidos em lista
+	>>> range(5)
+	range(0, 5)
+	>>> list(range(5))
+	[0, 1, 2, 3, 4]
+
+A função range() pode ser utilizada em conjunto com um for loop para interar em um alcance de números. Alcance também começa com 0 e pensa sobre os espaços entre os números
+
+Código
+	#!/usr/bin/env python3
+
+	for num in range(5):
+	  print(num)
+
+Saída
+	$ python list_range.py
+	0
+	1
+	2
+	3
+	4
+Como podemos ver, esta é a mesma saída que quando utilizamos a lista numbers = [0, 1, 2, 3, 4] e esse tem a mesma funcionalidade que um while loop com a condição count = 0 ; count < 5
+
+Esse é o while loop equivalente
+Código
+	count = 0
+	while count < 5:
+	  print(count)
+	  count+=1
+
+Saída
+	0
+	1
+	2
+	3
+	4
+
+Controle de loop
+As declarações de controle de loop permitem alteração no fluxo normal de execução
+Declaração de controle		Descrição
+break				Um loop é terminado quando uma declaração break é executada. Todas as linhas de código após o break, mas dentro do bloco de loop não são executadas. Sem mais interações do loop performando
+continue			Uma única interação de uma loop é terminada quando a declaração continue é executada. A próxima interação vai proceder normalmente.
+
+Controle de loop: Break
+Código
+	#!/usr/bin/env python3
+
+	count = 0
+	while count < 5:
+	  print("count:" , count)
+	  count+=1
+	  if count == 3:
+	    break
+	print("Done")
+
+Saída
+	$ python break.py
+	count: 0
+	count: 1
+	count: 2
+	Done
+Quando a contagem é igual a 3, a execução do while loop é terminada, no entanto, a condição inicial permanece verdadeira (count < 5)
+
+Controle de loop: Continue
+Código
+	#!/usr/bin/env python3
+
+	count = 0
+	while count < 5:
+	  print("count:" , count)
+	  count+=1
+	  if count == 3:
+	    continue
+	  print("line after our continue")
+	print("Done")
+
+Saída
+	$ python continue.py
+	count: 0
+	line after our continue
+	count: 1
+	line after our continue
+	count: 2
+	count: 3
+	line after our continue
+	count: 4
+	line after our continue
+	Done
+
+Quando a contagem é igual a 3, o continue é executado. Isso faz com que todas as linhas contendo o bloco de loop sejam puladas. "line after our continue" não é impresso quando a contagem é igual a 3. O próximo loop é executado normalmente.
+
+
+Iteradores
+Um iterável é qualquer tipo de dado que pode ser iterado, ou pode ser usado em uma interação. Um interável pode ser transformado em um interador com a função iter(). Isso significa que você pode utilizar a função next()
+	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> codons_iterator=iter(codons)
+	>>> next(codons_iterator)
+	'atg'
+	>>> next(codons_iterator)
+	'aaa'
+	>>> next(codons_iterator)
+	'agg'
+	>>> next(codons_iterator)
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	StopIteration
+Um interador permite que você obtenha o próximo elemento no interador até que não existam mais elementos. Se você quiser ir através de cada elemento novamente, precisará redefinir o interador
+
+Exemplo de utilização de um interador em um for loop
+Código
+	codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> codons_it = iter(codons)
+	>>> for codon in codons_it :
+	...   print( codon )
+	...
+	atg
+	aaa
+	agg
+Isso é bom se você tem uma lista muito larga que você não deseja manter na memória. Um interador permite que você vá através de cada elemento, mas sem manter a lista completa na memória. Sem interadores toda a lista permanece na memória.
+
+
+Compreensão de lista
+Compreensão de lista é uma forma de fazer uma lista sem digitar cada elemento. Existem muitas formas de usar compreensão de lista para gerar listas. Alguns são relativamente complexos, mas úteis.
+Aqui está um exemplo fácil:
+	>>> dna_list = ['TAGC', 'ACGTATGC', 'ATG', 'ACGGCTAG']
+	>>> lengths = [len(dna) for dna in dna_list]
+	>>> lengths
+	[4, 8, 3, 8]
+
+Isso é como podemos fazer o mesmo com um for loop
+	>>> lengths = []
+	>>> dna_list = ['TAGC', 'ACGTATGC', 'ATG', 'ACGGCTAG']
+	>>> for dna in dna_list:
+	...   lengths.append(len(dna))
+	...
+	>>> lengths
+	[4, 8, 3, 8]
+
+Utilizando condições:
+Isso vai apenas retornar o comprimento de um elemento que começa com 'A':
+	>>> dna_list = ['TAGC', 'ACGTATGC', 'ATG', 'ACGGCTAG']
+	>>> lengths = [len(dna) for dna in dna_list if dna.startswith('A')]
+	>>> lengths
+	[8, 3, 8]
+
+Aqui um exemplo de utilização de operadores matemáticos para gerar uma lista:
+	>>> two_power_list = [2 ** x for x in range(10)]
+	>>> two_power_list
+	[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+
