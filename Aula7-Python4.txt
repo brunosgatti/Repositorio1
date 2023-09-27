@@ -419,3 +419,4 @@ Aqui um exemplo de utilização de operadores matemáticos para gerar uma lista:
 	>>> two_power_list
 	[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 
+Conteúdo retirado de: https://github.com/labbces/cen0336/blob/master/pfb.md/#python-4
