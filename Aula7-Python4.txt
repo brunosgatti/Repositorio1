@@ -86,9 +86,9 @@ Funções			Descrição							Exemplo
 len(list)		retorna o comprimento ou o número de valores em uma lista	len([1,2,3]) retorna 3
 max(list)		retorna o valor com o maior ASCII (=último no alfabeto ASCII)	max(['a','A','z']) retorna 'z'
 min(list)		retorna o valor com o menor ASCII (=primeiro no alfabeto ASCII)	min(['a','A','z']) retorna 'A'
-list(seq)		converte uma tupla em uma lista	list(('a','A','z')) retorna ['a', 'A', 'z']
-sorted(list, key=None, reverse=False)	retorna uma lista organizada baseada na chave fornecida	sorted(['a','A','z']) retorna ['A', 'a', 'z']
-sorted(list, key=str.lower, reverse=False)	str.lower() faz com que todos os elementos fiquem minúsculos antes de organizar	sorted(['a','A','z'],key=str.lower) retorna ['a', 'A', 'z']
+list(seq)		converte uma tupla em uma lista	list(('a','A','z')) 		retorna ['a', 'A', 'z']
+sorted(list, key=None, reverse=False)			retorna uma lista organizada baseada na chave fornecida	sorted(['a','A','z']) retorna ['A', 'a', 'z']
+sorted(list, key=str.lower, reverse=False)				str.lower() faz com que todos os elementos fiquem minúsculos antes de organizar	sorted(['a','A','z'],key=str.lower) retorna ['a', 'A', 'z']
 
 
 Lista de métodos
