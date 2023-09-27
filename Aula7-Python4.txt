@@ -1,0 +1,94 @@
+Listas e tuplas
+
+Listas
+São tipos de dados que armazenam uma coleção de dados
+-São usadas para armazenar uma coleção de dados ordenada e indexada
+-Valores são separados por vírgulas
+-Valores são anexados entre colchetes '[]'
+-Listas podem crescer e encolher
+-Valores são mutáveis
+	['atg', 'aaa', 'agg']
+
+Tuplas
+-São usadas para armazenar uma coleção de dados ordenada e indexada
+-Valores são separados por vírgulas
+-Valores são anexados entre parenteses '()'
+-Tuplas NÃO podem crescer ou encolher
+Valores são imutáveis
+	( 'Jan' , 'Fev' , 'Mar' , 'Abr' , 'Mai' , 'Jun' , 'Jul' , 'Ago' , 'Set' , 'Out' , 'Nov' , 'Dez' )
+
+Muitas funções e métodos retornam tuplas como math.modf(x). Essa função retorna as partes fracionais e inteiras de x em uma tupla de dois itens. Aqui não existem motivos para mudar a sequência.
+
+	>>> math.modf(2.6)
+	(0.6000000000000001, 2.0)
+
+Voltando às listas:
+
+Acessando valores em listas
+Para recuperar um valor em uma lista, utilize o índice do valor nesse formato list[index]. Isso retornará o valor do índice especificado, começando com 0.
+ex.: 	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> codons[0]
+	'atg'
+
+O valor pode ser salvo para depois através do armazenamento em uma variável
+	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> first_codon = codons[0]
+	>>> print(first_codon)
+	atg
+
+Se você deseja acessar os valores começando pelo fim da lista, use índices negativos
+	>>> codons = [ 'atg' , 'aaa' , 'agg' ]
+	>>> print(codons[-1])
+	agg
+	>>> print(codons[-2])
+	aaa
+
+Alterando valores em uma lista
+Valores individuais podem ser alterados usando o valor de índice e o operador de atribuição
+	>>> print(codons)
+	['atg', 'aaa', 'agg']
+	>>> codons[2] = 'cgc'
+	>>> print(codons)
+	['atg', 'aaa', 'cgc']
+
+E sobre atribuir um valor para um índice que não existe?
+	>>> codons[5] = 'aac'
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	IndexError: list assignment index out of range
+codon[5] não existe, e quando tentamos atribuir valor para esse índice ocorre um IndexError. Se você deseja adicionar novos elementos no final da lista use codons.append('') ou codons.extend(list).
+
+Usemos a syntaxe [start : end : step] para dividir nossa sequência python
+	>>> codons = [ 'atg' , 'aaa' , 'agg' , 'aac' , 'cgc' , 'acg']
+	>>> print (codons[1:3])
+	['aaa', 'agg']
+	>>> print (codons[3:])
+	['aac', 'cgc', 'acg']
+	>>> print (codons[:3])
+	['atg', 'aaa', 'agg']
+	>>> print (codons[0:3])
+	['atg', 'aaa', 'agg']
+codons[1:3] retorna todo valor começando com o valor de codons[1] até, mas não incluindo, os codons[3]
+codons[3:] retorna todo valor começando com o valor de codons[3] e todos os valores posteriores
+codons[:3] retorna todo valor até, mas não incluindo, codons[3]
+codons[0:3] é o mesmo que codons[:3]
+
+Lista de operadores
+Operador	Descrição	Exemplo
++		Concatenação	[10, 20, 30] + [40, 50, 60] retorna [10, 20, 30, 40, 50, 60]
+*		Repetição	['atg'] * 4 retorna ['atg','atg','atg','atg']
+in		Filiação	20 in [10, 20, 30] retorna True
+
+
+Lista de funções
+Funções			Descrição							Exemplo
+len(list)		retorna o comprimento ou o número de valores em uma lista	len([1,2,3]) retorna 3
+max(list)		retorna o valor com o maior ASCII (=último no alfabeto ASCII)	max(['a','A','z']) retorna 'z'
+min(list)		retorna o valor com o menor ASCII (=primeiro no alfabeto ASCII)	min(['a','A','z']) retorna 'A'
+list(seq)		converte uma tupla em uma lista	list(('a','A','z')) retorna ['a', 'A', 'z']
+sorted(list, key=None, reverse=False)	retorna uma lista organizada baseada na chave fornecida	sorted(['a','A','z']) retorna ['A', 'a', 'z']
+sorted(list, key=str.lower, reverse=False)	str.lower() faz com que todos os elementos fiquem minúsculos antes de organizar	sorted(['a','A','z'],key=str.lower) retorna ['a', 'A', 'z']
+
+
+Lista de métodos
