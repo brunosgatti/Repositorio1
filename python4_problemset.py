@@ -116,5 +116,15 @@ print('\n')
 print('\n6. Iterate through each element on this list using a for loop: [100,2,15,22,95,33,2,27,72,15,52]',
         '\n-Print out only the values that are even')
 my_list = [100, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52]
-for number in my_list:
-    if x 
+list_iterator = iter(my_list)
+for x in my_list:
+    if x % 2 == 0:
+        print(x)
+
+
+##NO 6 FALTA IMPRIMIR SOMENTE SE FOR PAR
+
+### 7. Sort the elements of the above list, then iterate through each
+print('\n')
+print('\n7. Sort the elements of the above list, then iterate through each')
+print(sorted(my_list))
