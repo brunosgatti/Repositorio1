@@ -113,4 +113,237 @@ not in		key not in dict returns True if the key does not exist in the dictionary
 
 
 
+	Because Python generates a NameError if you try to use a key that doesn't exist in the dictionary, you need to check whether a key exists before trying to use it.
+	
+	The best way to check wheter a key exists is to use in
+
+	>>> gene = 'TP53'
+	>>> if gene in genes: 
+	...     print('found')
+	... 
+	found
+	>>> 
+	>>> if gene in genes:
+	...     print(genes[gene])
+	... 
+	GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTC
+	>>> 
+
+Building a dictionary one key/value at a time using a loop
+	Now we have all the tools to build a dictionary one key/value using a for loop. This is how you will be building dictionaries more often in real life
+
+
+	Here we are going to count and store nucleotide counts:
+	#!/usr/bin/env python3
+
+	# create a new empty dictionary
+	nt_count={}
+	
+	# loop example from loops lecture
+	dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+	for nt in dna:
+	
+	  # is this nt in our dictionary?
+	  if nt in nt_count:
+	    # if it is, lets increment our count
+	    previous_count = nt_count[nt]
+	    new_count = previous_count + 1
+	    nt_count[nt] = new_count
+	  else:
+	    # if not, lets add this nt to our dictionary and make count = 1
+	    nt_count[nt] = 1;
+	
+	print(nt_count)
+	
+	{'G': 20, 'T': 21, 'A': 13, 'C': 16}
+
+	
+	What is another way we could increment our count?
+	
+	nt_count={}
+
+	dna = 'GTACCTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+	for nt in dna:
+	  if nt in nt_count:
+	    nt_count[nt] += 1
+	  else:
+	    nt_count[nt] = 1;
+	
+	print(nt_count)
+
+	(remember that count=count+1 is the same as count+=1
+
+Sorting dictionary keys
+
+	If you want to print the contents of a dictionary, you should sort the keys then iterate overthe keys with a for loop. Why do you want to sort the keys?
+
+	for gene_key in sorted(genes): # python allows you to use this shortcut in a for loop
+	                               # you don't have to write genes.keys() in a for loop
+        	                       # to iterate over the keys
+	  print(gene_key, '=>' , genes[gene_key])
+
+	This will print keys in the same order every time you run your script. Dictionaries are unordered, so without sorting, you'll get a different order every time you run the script, which could be confusing
+
+
+Dictionary functions
+Function	Description
+len(dict)	returns the total number of key/value pairs
+str(dict)	returns a string representation of the dictionary
+type(variable)	Returns the type or class of the variable passed to the function. If the variable is dictionary, then it would return a dictionary type.
+
+	These functions work on several other data types too
+
+
+Dictionary methods
+Method	Description
+dict.clear()				Removes all elements of dictionary dict
+dict.copy()				Returns a shallow copy of dictionary dict. Shallow vs. deep copying only matters in multidimensional data structures.
+dict.fromkeys(seq,value)		Create a new dictionary with keys from seq (Python sequence type) and values set to value.
+dict.items()				Returns a list of (key, value) tuple pairs
+dict.pop(key)				Removes the key:value pair and returns the value
+dict.keys()				Returns list of keys
+dict.get(key, default = None)		get value from dict[key], use default if not present
+dict.setdefault(key, default = None)	Similar to get(), but will set dict[key] = default if key is not already in dict
+dict.update(dict2)			Adds dictionary dict2's key-values pairs to dict
+dict.values()				Returns list of dictionary dict's values
+
+
+Sets
+
+	A set is another Python data type. It is essentially a dictionary with keys but no values
+	
+	-A set is unordered
+	-A set is a collection of data with no duplicate elements
+	-Common uses inclued lookin for differences and eliminating duplicate in data sets
+
+Curly braces {} or the set() function can be used to create sets
+	Obs.: to create an empty set, you have to use set(), as {} will create an empty dictionary
+
+	>>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+	>>> print(basket)                     
+	{'orange', 'banana', 'pear', 'apple'}
+
+Test to see if a value is in the set
+	>>> 'orange' in basket                 
+	True
+	>>> 'crabgrass' in basket
+	False
+
+Union, intersection, difference and symmetric difference can be done with sets
+
+	>>> a = set('abracadabra')
+	>>> b = set('alacazam')
+	>>> a                                 
+	{'a', 'r', 'b', 'c', 'd'}
+
+	Sets contain unique elements, therefore, even if duplicate elements are provided they will be removed
+
+Set operators
+
+	Difference
+		The difference between two sets are the elements that are unique to the set to the left of the - operator, with duplicates removed
+	
+	>>> a = set('abracadabra')
+	>>> b = set('alacazam')
+	>>> a - b                             
+	{'r', 'd', 'b'}
+
+	
+	Union
+		The union between two sets is a sequence of all the elements of the first and second sets combined, with duplicates removed
+
+	>>> a = set('abracadabra')
+	>>> b = set('alacazam')
+	>>> a | b                          
+	{'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
+
+
+	Intersection
+		The intersection between two sets is a sequence of the elements which are in both sets, with duplicates removed
+
+	>>> a = set('abracadabra')
+	>>> b = set('alacazam')
+	>>> a & b                            
+	{'a', 'c'}
+
+	Symmetric difference
+		The symmetric difference is the elements that are only in the first set plus the elements that are only in the second set, with duplicates removed
+
+	>>> a = set('abracadabra')
+	>>> b = set('alacazam')
+	>>> a ^ b                             
+	{'r', 'd', 'b', 'm', 'z', 'l'}
+
+
+Set functions
+Function	Description
+all()		returns True if all elements of the set are true (or if the set is empty).
+any()		returns True if any element of the set is true. If the set is empty, return False.
+enumerate()	returns an enumerate object. It contains the index and value of all the items of set as a pair.
+len()		returns the number of items in the set.
+max()		returns the largest item in the set.
+min()		returns the smallest item in the set.
+sorted()	returns a new sorted list from elements in the set (does not alter the original set).
+sum()		returns the sum of all elements in the set.
+
+
+Set methods
+Method	Description
+set.add(new)				adds a new element
+set.clear()				remove all elements
+set.copy()				returns a shallow copy of a set
+set.difference(set2)			returns the difference of set and set2
+set.difference_update(set2)		removes all elements of another set from this set
+set.discard(element)			removes an element from set if it is found in set. (Do nothing if the element is not in set)
+set.intersection(sets)			return the intersection of set and the other provided sets
+set.intersection_update(sets)		updates set with the intersection of set and the other provided sets
+set.isdisjoint(set2)			returns True if set and set2 have no intersection
+set.issubset(set2)			returns True if set2 contains set
+set.issuperset(set2)			returns True if set contains set2
+set.pop()				removes and returns an arbitrary element of set.
+set.remove(element)			removes element from a set.
+set.symmetric_difference(set2)		returns the symmetric difference of set and set2
+set.symmetric_difference_update(set2)	updates set with the symmetric difference of set and set2
+set.union(sets)				returns the union of set and the other provided sets
+set.update(set2)			update set with the union of set and set2
+
+
+Build a dictionary of NT counts using a set and loops
+	Let us put a twist on our nt count script. Let's use a set to find all the unique nts, then use the string count() method to count the nucleotide instead of incrementing the count as we did earlier
+
+	Code:
+	
+	#!/usr/bin/env python3
+
+	# create a new empty dictionary
+	nt_count = {}
+	
+	# get a set of unique characters in our DNA string
+	
+	dna = 'GTACCNTTGATTTCGTATTCTGAGAGGCTGCTGCTTAGCGGTAGCCCCTTGGTTTCCGTGGCAACGGAAAA'
+	unique = set(dna)
+	
+	print('unique nt: ', unique) ## {'C', 'A', 'G', 'T', 'N'}
+	
+	# iterate through each unique nucleotide
+	for nt in unique:
+	  # count the number of this unique nt in dna
+	  count = dna.count(nt)
+	
+	  # add our count to our dict
+	  nt_count[nt] = count
+	
+	
+	print('nt count:', nt_count)
+
+
+	Output:
+
+	unique nt:  {'N', 'C', 'T', 'G', 'A'}
+	nt count: {'G': 20, 'T': 21, 'A': 13, 'C': 16, 'N': 1}
+
+	We have the count for all NTs even ones we might not expect
+
+
+
 
